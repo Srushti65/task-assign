@@ -13,10 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
+
+        if(!Schema::hasTable('tasks')) {
+
         Schema::create('tasks', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+
+            $table->id('t_id');
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+
+            $table->unsignedBigInteger('owner');
+            $table->foreign('owner')->references('u_id')->on('form_data')->nullable();
+
+            $table->date('created_at')->nullable();
+            $table->date('due_date')->nullable();
         });
+        }
     }
 
     /**

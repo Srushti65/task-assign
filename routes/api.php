@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,8 +16,10 @@ use App\Http\Controllers\FormController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::post('/submit-form', 'App\Http\Controllers\FormController@submit');
+
+Route::post('/add/task', 'App\Http\Controllers\TaskController@addTask');

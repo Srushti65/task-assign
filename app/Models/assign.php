@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class assign extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['task_id','user_id',];
+
+    public $timestamps = false;
+
 }
