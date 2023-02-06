@@ -11,4 +11,9 @@ class task extends Model
     protected $fillable = ['title', 'description', 'owner','created_at', 'due_date'];
 
     public $timestamps = false;
+
+    public function FormData()  
+    {  
+        return $this->hasOne('App\Models\FormData');  
+    } 
 }

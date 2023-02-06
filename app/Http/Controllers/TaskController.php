@@ -41,6 +41,15 @@ class TaskController extends Controller
     public function showTasks()
     {
         $tasks = task::all();
-        return $tasks;
+
+        // $ownerName = FormData::find(task->owner)->name;
+
+        foreach ($tasks){
+
+            $ownerName = FormData::find(task->owner)->name;
+            $tasks->owner = $ownerName;
+
+        }
+        return tasks;
     }
 }

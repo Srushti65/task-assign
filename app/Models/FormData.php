@@ -12,4 +12,9 @@ class FormData extends Model
     protected $fillable = ['name', 'email',];
 
     public $timestamps = false;
+
+    public function task()  
+    {  
+        return $this->hasMany('App\Models\task');  
+    } 
 }

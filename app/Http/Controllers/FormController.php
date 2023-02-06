@@ -23,8 +23,9 @@ class FormController extends Controller
         return response()->json(['message' => 'form submitted successfully']);
     }
 
-    public function showUsers()
+    public function showAll()
     {
-        
+        $users = FormData::all();
+        return $users;
     }
 }
