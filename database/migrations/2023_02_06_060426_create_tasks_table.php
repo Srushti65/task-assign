@@ -24,7 +24,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('owner');
             $table->foreign('owner')->references('u_id')->on('form_data')->nullable();
-
+            
             $table->date('created_at')->nullable();
             $table->date('due_date')->nullable();
         });

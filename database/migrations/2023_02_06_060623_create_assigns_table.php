@@ -18,7 +18,7 @@ return new class extends Migration
         Schema::create('assigns', function (Blueprint $table) {
             // $table->foreign('task_id')->references('id')->on('task')->onDelete('cascade');
             // $table->foreign('assigned_to')->references('u_id')->on('FormData')->onDelete('cascade');
-
+            $table->id();
             $table->unsignedBigInteger('task_id');
 
             $table->foreign('task_id')->references('t_id')->on('tasks');

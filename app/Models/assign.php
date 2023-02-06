@@ -9,7 +9,7 @@ class assign extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['task_id','user_id',];
+    protected $fillable = ['id','task_id','user_id'];
 
     public $timestamps = false;
 
