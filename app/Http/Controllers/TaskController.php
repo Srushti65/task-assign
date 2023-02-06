@@ -17,13 +17,13 @@ class TaskController extends Controller
         // dd("t");
        $valid_data = 
        [
-        'title' => $req->title,
-        'description' => $req->description,
-        'owner' => $req->owner,
-        'assigned_to'=>$req->assigned_to,
-        'created_at'=> $req->created_at,
-        'due_date' => $req->due_date
-       ];
+        'title' => $req->data->title,
+        'description' => $req->data->description,
+        'owner' => $req->data->owner,
+        'assigned_to'=>$req->data->assigned_to,
+        'created_at'=> $req->cdata->reated_at,
+        'due_date' => $req->data->due_date
+       ]; 
 
         $task = task::create($valid_data);
 
