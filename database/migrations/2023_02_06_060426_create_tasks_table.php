@@ -22,8 +22,11 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->text('description')->nullable();
 
-            $table->unsignedBigInteger('owner');
-            $table->foreign('owner')->references('u_id')->on('form_data')->nullable();
+            // $table->unsignedBigInteger('owner');
+            // $table->foreign('owner')->references('u_id')->on('form_data')->nullable();
+
+            $table->string('owner')->nullable();
+            $table->string('assigned_to')->nullable();
             
             $table->date('created_at')->nullable();
             $table->date('due_date')->nullable();

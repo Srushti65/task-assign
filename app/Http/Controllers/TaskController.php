@@ -12,28 +12,27 @@ class TaskController extends Controller
     {
         
        
+        // dd($req->all());
         // assign::create($forNewEntry);
         // dd("t");
-       $valid_data = [
+       $valid_data = 
+       [
         'title' => $req->title,
         'description' => $req->description,
         'owner' => $req->owner,
+        'assigned_to'=>$req->assigned_to,
         'created_at'=> $req->created_at,
         'due_date' => $req->due_date
        ];
 
         $task = task::create($valid_data);
 
-        // $forNewEntry = [
-        //     'task_id' => $req->t_id,
-        //     'user_id' => $req->assigned_to
-        // ];
-        // dd($task->id);
+
       
-        $assign = new assign();
-        $assign->task_id = $task->id;
-        $assign->user_id = $req->assigned_to;
-        $assign->save();
+        // $assign = new assign();
+        // $assign->task_id = $task->id;
+        // $assign->user_id = $req->assigned_to;
+        // $assign->save();
 
         return response()->json(['message' => 'task submitted successfully']);
     }
@@ -44,12 +43,12 @@ class TaskController extends Controller
 
         // $ownerName = FormData::find(task->owner)->name;
 
-        foreach ($tasks){
+        // foreach ($tasks){
 
-            $ownerName = FormData::find(task->owner)->name;
-            $tasks->owner = $ownerName;
+        //     $ownerName = FormData::find(task->owner)->name;
+        //     $tasks->owner = $ownerName;
 
-        }
-        return tasks;
+        // }
+        return $tasks;
     }
 }
