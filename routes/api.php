@@ -23,3 +23,5 @@ use App\Http\Controllers\FormController;
 Route::post('/submit-form', 'App\Http\Controllers\FormController@submit');
 
 Route::post('/add/task', 'App\Http\Controllers\TaskController@addTask');
+
+Route::get('/view', 'App\Http\Controllers\FormCotroller@showUsers');

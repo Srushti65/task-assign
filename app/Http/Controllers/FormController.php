@@ -19,8 +19,7 @@ class FormController extends Controller
        
         FormData::create($vd);
 
-        // dd("hjdsb");
-
+    
         return response()->json(['message' => 'form submitted successfully']);
     }
 }
