@@ -17,17 +17,16 @@ class FormController extends Controller
         //     'email' => 'required|email',
         // ]);
 
-        $vd = $req->data;
+        $temp = $req->data;
        
-        FormData::create($vd);
-        // $assign = new assign();
-        // $assign->$req->task_id = $task->id;
-        // $assign->$req->user_id = $req->assigned_to;
-        // $assign->save();
+        // FormData::create($vd);
 
-        $newUser = new FormData;
-        $newUser->name = $req->data->name;
-        $newUser->email = $req->data->email;
+        // dd($temp);
+          
+        $newUser = new FormData();
+        $newUser->name = $temp['name'];
+        $newUser->email = $temp['email'];
+        // dd($newUser);
         $newUser->save();
 
 
