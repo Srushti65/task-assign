@@ -32,6 +32,7 @@ class TaskController extends Controller
        $n->owner_id = $req->data['owner_id'];
        $n->created_at = $req->data['created_at'];
        $n->due_date = $req->data['due_date'];
+       $n->assigned_to = $req->data['assigned_to'];
         $n->save();
 
         // $task = task::create($valid_data);
@@ -48,16 +49,21 @@ class TaskController extends Controller
     //     'user_id' => $req->data->assigned_to,
     //     'task_id' => $task->id
     //    ];
+        //
 
-       $newT = new assign();
-       $newT->user_id = $req->data['assigned_to'];
-       $newT->task_id = $n->id;
+    //    $newT = new assign();
+    //    $newT->user_id = $req->data['assigned_to'];
+    //    $newT->task_id = $n->id;
 
-       $newT->save();
+    //    $newT->save();
+
+       //
 
     //    assign::create($assign_data);
 
-        return response()->json(['message' => 'task submitted successfully']);
+        // return response()->json(['message' => 'task submitted successfully']);
+        
+        
     }
 
     public function showTasks()
@@ -73,8 +79,17 @@ class TaskController extends Controller
             // dd($task->owner);
             // $task->owner_id;
             // dd($task->owner->name);
-            // $task->owner();
+            // dd($task->owner->name);
             $task->owner_name = $task->owner->name;
+
+            //for assigned_to
+            // $tid = $task->t_id;
+            // $taskRow = $task->assignedTo;
+            // dd($taskRow);
+
+            $task->assigned_to_name= $task->assignedTo->name;
+            dd($task);
+            
         }
         return $tasks;
         // $tasks = task::first();
@@ -94,5 +109,10 @@ class TaskController extends Controller
         $uTask = task::find(1);
         $owner = $uTask->owner;
         $owner_name = $owner->name;
+    }
+
+    public function updateTask(Request $req)
+    {
+
     }
 }

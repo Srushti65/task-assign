@@ -16,7 +16,7 @@ class assign extends Model
 
     public function getTask()
     {
-        return $this->hasOne(task::class, 'task_id', 't_id');
+        return $this->belongsTo(task::class, 'task_id', 't_id');
     }
 
     public function getUser()
