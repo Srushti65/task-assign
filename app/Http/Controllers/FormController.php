@@ -20,13 +20,11 @@ class FormController extends Controller
         $temp = $req->data;
        
         // FormData::create($vd);
-
-        // dd($temp);
           
         $newUser = new FormData();
         $newUser->name = $temp['name'];
         $newUser->email = $temp['email'];
-        // dd($newUser);
+        
         $newUser->save();
 
 

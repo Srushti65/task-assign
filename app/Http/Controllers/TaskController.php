@@ -29,7 +29,7 @@ class TaskController extends Controller
        $n = new task();
        $n->title = $req->data['title'];
        $n->description = $req->data['description'];
-       $n->owner = $req->data['owner'];
+       $n->owner_id = $req->data['owner_id'];
        $n->created_at = $req->data['created_at'];
        $n->due_date = $req->data['due_date'];
         $n->save();
@@ -49,11 +49,11 @@ class TaskController extends Controller
     //     'task_id' => $task->id
     //    ];
 
-       $newT = new assign();
-       $newT->user_id = $req->data['assigned_to'];
-       $newT->task_id = $n->id;
+    //    $newT = new assign();
+    //    $newT->user_id = $req->data['assigned_to'];
+    //    $newT->task_id = $n->id;
 
-       $newT->save();
+    //    $newT->save();
 
     //    assign::create($assign_data);
 
@@ -62,16 +62,37 @@ class TaskController extends Controller
 
     public function showTasks()
     {
+        // $tasks = task::all();
+        // return $tasks;
         $tasks = task::all();
+        
+        // dd($tasks);
 
-        // $ownerName = FormData::find(task->owner)->name;
-
-        // foreach ($tasks){
-
-        //     $ownerName = FormData::find(task->owner)->name;
-        //     $tasks->owner = $ownerName;
-
-        // }
+        foreach($tasks as $task)
+        {
+            // dd($task->owner);
+            // $task->owner_id;
+            // dd($task->owner->name);
+            // $task->owner();
+            $task->owner_name = $task->owner->name;
+        }
         return $tasks;
+        // $tasks = task::first();
+        // dd($tasks->owner);
+
+        // $task = [
+
+        //     'title' => 'asjnak',
+        //     'description' => 'akjsdahsj'
+        // ];
+        
+        // $task['c'] = c;
+        // $task->c = c;
+
+        
+
+        $uTask = task::find(1);
+        $owner = $uTask->owner;
+        $owner_name = $owner->name;
     }
 }
