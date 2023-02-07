@@ -62,7 +62,10 @@ class TaskController extends Controller
     //    assign::create($assign_data);
 
         // return response()->json(['message' => 'task submitted successfully']);
-        
+        $n->assigned_to_name = $n->assignedTo->name;
+        $n->owner_name = $n->owner->name;
+        // $task->assigned_to_name= $task->assignedTo->name;
+        return $n;
         
     }
 
@@ -113,6 +116,8 @@ class TaskController extends Controller
 
     public function updateTask(Request $req)
     {
+        //id k sath task ka sara dtaa dega updated: Hamza 7th Feb 19:37
+
 
     }
 }
