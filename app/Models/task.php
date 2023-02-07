@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class task extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'description', 'owner', 'assigned_to','created_at', 'due_date'];
+    protected $fillable = ['title', 'description', 'owner', 'assigned_to', 'created_at', 'due_date', 'is_deleted'];
 
     public $timestamps = false;
 
-    public function FormData()  
-    {  
-        return $this->hasOne('App\Models\FormData');  
-    } 
+    public function FormData()
+    {
+        return $this->hasOne('App\Models\FormData');
+    }
 }
