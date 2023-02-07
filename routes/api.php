@@ -27,3 +27,5 @@ Route::post('/add/task', 'App\Http\Controllers\TaskController@addTask');
 Route::get('/viewUser', 'App\Http\Controllers\FormController@showAll');
 
 Route::get('/viewTask', 'App\Http\Controllers\TaskController@showTasks');
+
+Route::post('/updateTask','App\Http\Controllers\TaskController@updateTask');

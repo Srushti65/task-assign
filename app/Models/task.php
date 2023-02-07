@@ -17,8 +17,16 @@ class task extends Model
     // {  
     //     return $this->hasOne('App\Models\FormData');  
     // } 
+
+    //to get owner from user data
     public function owner()
     {
         return $this->belongsTo(FormData::class, 'owner_id', 'u_id');
+    }
+
+    //to get assignee from user data
+    public function assignedTo()
+    {
+        return $this->belongsTo(FormData::class, 'assigned_to', 'u_id');
     }
 }
