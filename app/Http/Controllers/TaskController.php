@@ -12,35 +12,48 @@ class TaskController extends Controller
     {
         
        
-        dd($req->all());
+        // dd($req->all());
         // assign::create($forNewEntry);
         // dd("t");
         
         
-       $valid_data = 
-       [
-        'title' => $req->data->title,
-        'description' => $req->data->description,
-        'owner' => $req->data->owner,
-        'created_at'=> $req->data->created_at,
-        'due_date' => $req->data->due_date
-       ]; 
+    //    $valid_data = 
+    //    [
+    //     'title' => $req->data['title'],
+    //     'description' => $req->data['description'],
+    //     'owner' => $req->data['owner'],
+    //     'created_at'=> $req->data['created_at'],
+    //     'due_date' => $req->data['due_date']
+    //    ]; 
     
+       $n = new task();
+       $n->title = $req->data['title'];
+       $n->description = $req->data['description'];
+       $n->owner = $req->data['owner'];
+       $n->created_at = $req->data['created_at'];
+       $n->due_date = $req->data['due_date'];
+        $n->save();
 
-        $task = task::create($valid_data);
+        // $task = task::create($valid_data);
 
-
+     
       
         // $assign = new assign();
         // $assign->$req->task_id = $task->id;
         // $assign->$req->user_id = $req->assigned_to;
         // $assign->save();
 
-       dd($req->assigned_to);
-       $assign_data =[
-        'user_id' => $req->data->assigned_to,
-        'task_id' => $task->id
-       ];
+       
+    //    $assign_data =[
+    //     'user_id' => $req->data->assigned_to,
+    //     'task_id' => $task->id
+    //    ];
+
+       $newT = new assign();
+       $newT->user_id = $req->data['assigned_to'];
+       $newT->task_id = $n->id;
+
+       $newT->save();
 
     //    assign::create($assign_data);
 
