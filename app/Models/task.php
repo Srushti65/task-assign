@@ -13,6 +13,8 @@ class task extends Model
 
     public $timestamps = false;
 
+    protected $primaryKey = 't_id';
+
     // public function FormData()  
     // {  
     //     return $this->hasOne('App\Models\FormData');  
