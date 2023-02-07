@@ -49,11 +49,11 @@ class TaskController extends Controller
     //     'task_id' => $task->id
     //    ];
 
-    //    $newT = new assign();
-    //    $newT->user_id = $req->data['assigned_to'];
-    //    $newT->task_id = $n->id;
+       $newT = new assign();
+       $newT->user_id = $req->data['assigned_to'];
+       $newT->task_id = $n->id;
 
-    //    $newT->save();
+       $newT->save();
 
     //    assign::create($assign_data);
 

@@ -21,12 +21,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('task_id');
 
-            $table->foreign('task_id')->references('t_id')->on('tasks');
-            
             $table->unsignedBigInteger('user_id');
-
-            $table->foreign('user_id')->references('u_id')->on('form_data');
-        
         });
     }
     }
