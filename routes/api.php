@@ -26,10 +26,12 @@ Route::post('/add/task', 'App\Http\Controllers\TaskController@addTask');
 
 Route::get('/viewUser', 'App\Http\Controllers\FormController@showAll');
 
+//listing
 Route::get('/viewTask', 'App\Http\Controllers\TaskController@showTasks');
 
 Route::put('/updateTask/{id}', 'App\Http\Controllers\TaskController@updateTask');
 
 Route::delete('/delete/Task/{id}', 'App\Http\Controllers\TaskController@deleteTask');
 
-Route::get('/viewTask/{id}','App\Http\Controllers\TaskController@viewTask');
+//single tasks
+Route::get('/viewTask/{id}', 'App\Http\Controllers\TaskController@viewTask');
