@@ -92,8 +92,9 @@ class TaskController extends Controller
         $tasks->map(function ($task){
             $task->owner_name = $task->owner->name;
             $task->assigned_to_name = $task->assignedTo->name;
-
+            $task->assigned_to_id = $task->assignedTo->u_id;    
             return $task;
+
         });
 
         return $tasks;
@@ -133,8 +134,8 @@ class TaskController extends Controller
     {
         $task = task::find($id);
         
-        $task->owner_name = $task->owner->name;
-        $task->assigned_to = $task->assignedTo->name;
+        // $task->owner_name = $task->owner->name;
+        // $task->assigned_to = $task->assignedTo->name;
 
         return $task;
 
