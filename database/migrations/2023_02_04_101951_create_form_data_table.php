@@ -14,15 +14,15 @@ return new class extends Migration
     public function up()
     {
 
-        if(!Schema::hasTable('form_data')) {
-
-
-        Schema::create('form_data', function (Blueprint $table) {
-            $table->id('u_id');
-            $table->string('name');
-            $table->string('email');
-        });
-    }
+        if(!Schema::hasTable('form_data')) 
+        {
+            Schema::create('form_data', function (Blueprint $table) 
+            {
+                $table->id('u_id');
+                $table->string('name');
+                $table->string('email');
+            });
+        }
     }
 
     /**

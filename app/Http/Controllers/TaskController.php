@@ -73,45 +73,33 @@ class TaskController extends Controller
     {
         // $tasks = task::all();
         // return $tasks;
-        $tasks = task::all();
 
-        // dd($tasks);
+        
+        // $tasks = task::all();
 
-        foreach ($tasks as $task) {
-            // dd($task->owner);
-            // $task->owner_id;
-            // dd($task->owner->name);
-            // dd($task->owner->name);
+        // // dd($tasks);
+
+        // foreach ($tasks as $task) {
+        //     $task->owner_name = $task->owner->name;
+        //     $task->assigned_to_name = $task->assignedTo->name;
+            
+        // }
+        // return $tasks;
+
+        $tasks = task::with('owner', 'assignedTo')->get();
+        // $tasks=task::all();
+
+        $tasks->map(function ($task){
             $task->owner_name = $task->owner->name;
-
-            //for assigned_to
-            // $tid = $task->t_id;
-            // $taskRow = $task->assignedTo;
-            // dd($taskRow);
-
             $task->assigned_to_name = $task->assignedTo->name;
-            // dd($task);
 
-        }
+            return $task;
+        });
+
         return $tasks;
-        // $tasks = task::first();
-        // dd($tasks->owner);
-
-        // $task = [
-
-        //     'title' => 'asjnak',
-        //     'description' => 'akjsdahsj'
-        // ];
-
-        // $task['c'] = c;
-        // $task->c = c;
-
-
-
-        $uTask = task::find(1);
-        $owner = $uTask->owner;
-        $owner_name = $owner->name;
     }
+
+    
 
     public function updateTask(Request $req, $id)
     {

@@ -9,7 +9,7 @@ use App\Models\FormData;
 class task extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'description', 'owner_id', 'assigned_to','created_at', 'due_date', 'is_deleted'];
+    protected $fillable = ['title', 'description', 'owner_id', 'assigned_to','created_at', 'due_date'];
 
     public $timestamps = false;
 
