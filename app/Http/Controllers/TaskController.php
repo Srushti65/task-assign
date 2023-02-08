@@ -113,8 +113,22 @@ class TaskController extends Controller
         $owner_name = $owner->name;
     }
 
-    public function updateTask(Request $req)
+    public function updateTask(Request $req, $id)
     {
+        $task = Task::find($id);
+
+        $temp = $req->data;
+        // dd($temp['title']);
+        $task->title = $temp['title'];
+        
+        $task->description = $temp['description'];
+        $task->owner_id = $temp['owner_id'];
+        $task->assigned_to = $temp['assigned_to'];
+        $task->created_at = $temp['created_at'];
+        $task->due_date = $temp['due_date'];
+        $task->save();
+      
+        return $task;
     }
 
     public function deleteTask(Request $req, $id)
@@ -124,6 +138,17 @@ class TaskController extends Controller
         $task->delete();
 
         // return->response()->json(['message' => 'task submitted successfully']);
+
+    }
+
+    Public function viewTask($id)
+    {
+        $task = task::find($id);
+        
+        $task->owner_name = $task->owner->name;
+        $task->assigned_to = $task->assignedTo->name;
+
+        return $task;
 
     }
 }

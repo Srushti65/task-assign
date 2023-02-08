@@ -28,6 +28,8 @@ Route::get('/viewUser', 'App\Http\Controllers\FormController@showAll');
 
 Route::get('/viewTask', 'App\Http\Controllers\TaskController@showTasks');
 
-Route::post('/updateTask', 'App\Http\Controllers\TaskController@updateTask');
+Route::put('/updateTask/{id}', 'App\Http\Controllers\TaskController@updateTask');
 
 Route::delete('/delete/Task/{id}', 'App\Http\Controllers\TaskController@deleteTask');
+
+Route::get('/viewTask/{id}','App\Http\Controllers\TaskController@viewTask');
