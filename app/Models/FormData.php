@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use App\Models\task;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,8 +15,8 @@ class FormData extends Model
 
     public $timestamps = false;
 
-    public function task()  
-    {  
-        return $this->hasMany('App\Models\task');  
-    } 
+    public function task()
+    {
+        return $this->hasMany('App\Models\task');
+    }
 }
