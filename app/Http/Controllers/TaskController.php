@@ -48,7 +48,7 @@ class TaskController extends Controller
 
         $task->description = $temp['description'];
         $task->owner_id = $temp['owner_id'];
-        $task->assigned_to = $temp['assigned_to'];
+        $task->assigned_to = $temp['assigned_to_id'];
         $task->created_at = $temp['created_at'];
         $task->due_date = $temp['due_date'];
         $task->save();
