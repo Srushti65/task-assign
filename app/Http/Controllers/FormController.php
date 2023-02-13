@@ -12,8 +12,8 @@ class FormController extends Controller
     {
 
         $validated = $req->validate([
-            'data.name' => 'required',
-            'data.email' => 'required|email',
+            'data.name' => 'required|string|max:25|min:3',
+            'data.email' => 'required|email|unique:form_data,email,',
         ]);
 
         $temp = $req->data;
