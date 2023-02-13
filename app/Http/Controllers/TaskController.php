@@ -10,6 +10,7 @@ class TaskController extends Controller
 {
     public function addTask(Request $req)
     {
+
         $n = new task();
         $n->title = $req->data['title'];
         $n->description = $req->data['description'];

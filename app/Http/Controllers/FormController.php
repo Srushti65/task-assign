@@ -10,7 +10,13 @@ class FormController extends Controller
 {
     public function submit(Request $req)
     {
-
+        $validated = $req->validate(
+            [
+            'data.name' => 'required|string|max:255',
+            'data.email' => 'required|email|unique:form_data,email',
+            ]
+        );
+    
         $temp = $req->data;
         $newUser = new FormData();
         $newUser->name = $temp['name'];
