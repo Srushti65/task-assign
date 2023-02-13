@@ -10,6 +10,14 @@ class TaskController extends Controller
 {
     public function addTask(Request $req)
     {
+        $validated = $req->validate([
+            'data.title' => 'required|string|max:255|min:3',
+            'data.description' => 'required|text|max:555|min:3',
+            'data.owner_id' => 'required',
+            'data.created_at' => 'required|date.today',
+            'data.due_date' => 'required|date.after:today',
+            'data.assigned_to' => 'required',
+        ]);
         $n = new task();
         $n->title = $req->data['title'];
         $n->description = $req->data['description'];
