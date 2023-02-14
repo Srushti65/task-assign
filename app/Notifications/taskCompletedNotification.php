@@ -44,12 +44,12 @@ class taskCompletedNotification extends Notification
     public function toMail($notifiable)
     {
 
-        $url = url('/tasks/', $this->task->id);
+        // $url = url('/tasks/', $this->task->id);
         return (new MailMessage)
             ->subject('Task is completed')
-            // ->greeting('Hello, ' . $notifiable->name)                  )
-            ->line('the task you have assigned is completed.')
-            ->line($this->task->name)
+            ->greeting('Hello, ' . $notifiable->name)
+            ->line('The task you have assigned is completed.')
+            ->line('Task name: ' . $this->task->title)
             // ->action('View Task', $url)
             ->line('Thank you for using our application!');
     }

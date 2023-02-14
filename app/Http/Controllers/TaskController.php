@@ -98,6 +98,7 @@ class TaskController extends Controller
         $task = Task::find($id);
         $task->is_completed = 1;
 
+        $task->save();
         $task->taskIsCompletedNotification($task->owner_id);
 
         return response()->json(['message' => 'task completed successfully']);
