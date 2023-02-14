@@ -10,14 +10,18 @@ class TaskController extends Controller
 {
     public function addTask(Request $req)
     {
+        // dd($req->data);
         $validated = $req->validate([
             'data.title' => 'required|string|max:255|min:3',
-            'data.description' => 'required|text|max:555|min:3',
+            'data.description' => 'required|max:555|min:3',
             'data.owner_id' => 'required',
-            'data.created_at' => 'required|date.today',
-            'data.due_date' => 'required|date.after:today',
+            'data.created_at' => 'required|after_or_equal:today',
+            'data.due_date' => 'required|after_or_equal:today',
             'data.assigned_to' => 'required',
         ]);
+
+
+
         $n = new task();
         $n->title = $req->data['title'];
         $n->description = $req->data['description'];
@@ -80,5 +84,14 @@ class TaskController extends Controller
         $task->assigned_to = $task->assignedTo->name;
 
         return $task;
+    }
+
+    public function completeTask(Request $req, $id)
+    {
+        // dd($req->data);
+        $task = Task::find($id);
+        $task->is_completed = 1;
+
+        return response()->json(['message' => 'task completed successfully']);
     }
 }

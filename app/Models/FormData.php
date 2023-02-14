@@ -11,9 +11,10 @@ class FormData extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email'];
 
     public $timestamps = false;
+    protected $primaryKey = 'u_id';
 
     public function task()
     {

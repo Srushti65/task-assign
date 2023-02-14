@@ -35,3 +35,6 @@ Route::delete('/delete/Task/{id}', 'App\Http\Controllers\TaskController@deleteTa
 
 //single tasks
 Route::get('/viewTask/{id}', 'App\Http\Controllers\TaskController@viewTask');
+
+//for task compelition
+Route::put('/completeTask/{id}', 'App\Http\Controllers\TaskController@completeTask');
