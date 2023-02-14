@@ -50,7 +50,7 @@ class newTaskNotification extends Notification
         $url = url('/tasks/', $this->task->id);
         return (new MailMessage)
                     ->subject('New task created')
-                    // ->greeting('Hello, ' . $notifiable->name)                  )
+                    ->greeting('Hello, ' . $notifiable->name)
                     ->line('A new taskhas been assigned to you.')
                     ->line($this->task->name)
                     ->action('View Task', $url)
