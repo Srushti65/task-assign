@@ -43,14 +43,18 @@ class taskCompletedNotification extends Notification
      */
     public function toMail($notifiable)
     {
-
-        // $url = url('/tasks/', $this->task->id);
+        // dd($this->task->t_id);
+        $env = env('APP_URL');
+        // $url = ('http://localhost:3000/view/' . $this->task->t_id);
+        $url = ($env .'view/' . $this->task->t_id);
+        // dd($url);
+        //do this in background so things can fast
         return (new MailMessage)
             ->subject('Task is completed')
             ->greeting('Hello, ' . $notifiable->name)
             ->line('The task you have assigned is completed.')
             ->line('Task name: ' . $this->task->title)
-            // ->action('View Task', $url)
+            ->action('View Task', $url)
             ->line('Thank you for using our application!');
     }
 

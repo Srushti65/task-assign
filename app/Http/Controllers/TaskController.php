@@ -99,6 +99,7 @@ class TaskController extends Controller
         $task->is_completed = 1;
 
         $task->save();
+        //wrie this function logic here 
         $task->taskIsCompletedNotification($task->owner_id);
 
         return response()->json(['message' => 'task completed successfully']);

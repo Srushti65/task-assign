@@ -48,12 +48,15 @@ class newTaskNotification extends Notification
     public function toMail($notifiable)
     {
         // $url = url('/tasks/', $this->task->id);
+        $env = env('APP_URL');
+        $url = ($env . 'view/' . $this->task->t_id);
+        // dd($url);
         return (new MailMessage)
                     ->subject('New task created')
                     ->greeting('Hello, ' . $notifiable->name)
                     ->line('A new task has been assigned to you on '. $this->task->created_at .' please complete it before '. $this->task->due_date)
                     ->line('Task name: ' . $this->task->title)
-                    // ->action('View Task', $url)
+                    ->action('View Task', $url)
                     ->line('Thank you for using our application!');
     }
 
