@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\task;
 use App\Models\assign;
-
+use App\Notifications\sendNewTaskNotification;
 class TaskController extends Controller
 {
     public function addTask(Request $req)
@@ -28,6 +28,8 @@ class TaskController extends Controller
         $n->save();
         $n->assigned_to_name = $n->assignedTo->name;
         $n->owner_name = $n->owner->name;
+
+        $task->sendNewTaskNotification($n->assigned_to);
 
         return $n;
     }

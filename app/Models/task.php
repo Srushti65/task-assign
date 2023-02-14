@@ -14,6 +14,7 @@ class task extends Model
     public $timestamps = false;
 
     protected $primaryKey = 't_id';
+    protected $guarded = [];
 
     // public function FormData()  
     // {  
@@ -30,5 +31,13 @@ class task extends Model
     public function assignedTo()
     {
         return $this->belongsTo(FormData::class, 'assigned_to', 'u_id');
+    }
+
+    public function sendNewTaskNotification($id)
+    {
+        
+        $user = FormData::find($id)->first();
+        //you are supposed to add here somthinggggg
+        $user->notify(new newTaskNotification($this));
     }
 }

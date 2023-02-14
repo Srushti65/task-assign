@@ -12,7 +12,7 @@ class FormData extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'email', 'password'];
-
+    protected $guarded = [];
     public $timestamps = false;
 
     public function task()

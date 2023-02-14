@@ -32,4 +32,6 @@ class FormController extends Controller
         $users = FormData::all();
         return $users;
     }
+
+   
 }
