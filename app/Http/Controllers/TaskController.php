@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\task;
 use App\Models\assign;
 use App\Notifications\sendNewTaskNotification;
+use App\Notifications\taskCompletedNotification;
+
 class TaskController extends Controller
 {
     public function addTask(Request $req)
@@ -95,6 +97,8 @@ class TaskController extends Controller
         // dd($req->data);
         $task = Task::find($id);
         $task->is_completed = 1;
+
+        $task->taskIsCompletedNotification($task->owner_id);
 
         return response()->json(['message' => 'task completed successfully']);
     }
