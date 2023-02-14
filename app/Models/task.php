@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Notification;
 use App\Models\FormData;
+use App\Notifications\newTaskNotification;
 
 class task extends Model
 {
@@ -35,9 +37,10 @@ class task extends Model
 
     public function sendNewTaskNotification($id)
     {
-        
-        $user = FormData::find($id)->first();
+        $user = FormData::find($id);
         //you are supposed to add here somthinggggg
         $user->notify(new newTaskNotification($this));
+        // Notification::send($user, new newTaskNotification($this) );
+
     }
 }

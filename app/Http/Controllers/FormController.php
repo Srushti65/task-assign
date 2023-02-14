@@ -11,15 +11,9 @@ class FormController extends Controller
     public function submit(Request $req)
     {
 
-        // $validated = $req->validate([
-        //     dd($req->data),
-        //     'data.name' => 'required|string|max:25|min:3',
-        //     'data.email' => 'required|email|unique:form_data,email,',
-        // ]);
-
         $validated = $req->validate([
             'data.name' => 'required|string|max:25|min:3',
-            'data.email' => 'required|email|unique:form_data,email',
+            'data.email' => 'required|email|unique:form_data,email,',
         ]);
 
         $temp = $req->data;
@@ -30,6 +24,7 @@ class FormController extends Controller
         $newUser->email = $temp['email'];
         $newUser->save();
 
+        
         return response()->json(['message' => 'form submitted successfully']);
     }
 

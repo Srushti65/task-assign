@@ -6,8 +6,10 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\Models\task;
+use App\Models\FormData;
 
-class newTaskNotofication extends Notification
+class newTaskNotification extends Notification
 {
     use Queueable;
 
@@ -15,10 +17,15 @@ class newTaskNotofication extends Notification
      * Create a new notification instance.
      *
      * @return void
+     * 
+     * 
      */
-    public function __construct()
+    public $task;
+        
+    public function __construct(task $task)
     {
         //
+        $this->task = $task;
     }
 
     /**

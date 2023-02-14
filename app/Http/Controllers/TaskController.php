@@ -33,7 +33,9 @@ class TaskController extends Controller
         $n->assigned_to_name = $n->assignedTo->name;
         $n->owner_name = $n->owner->name;
 
-        $task->sendNewTaskNotification($n->assigned_to);
+        $n->sendNewTaskNotification($n->assigned_to);
+
+        // Notification::send($n->assigned_to, new newTaskNotification($n) );
 
         return $n;
     }
