@@ -11,7 +11,7 @@ class FormData extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'email',];
+    protected $fillable = ['name', 'email', 'password'];
 
     public $timestamps = false;
 

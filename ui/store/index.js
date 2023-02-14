@@ -4,6 +4,7 @@ export const state = () => ({
   tasks: [],
   users: [],
 });
+
 export const actions = {
   async showTask({ commit }) {
     // this.$axios.get(`http://127.0.0.1:8000/api/tasks`).then((response) => {

@@ -21,6 +21,7 @@ return new class extends Migration
                 $table->id('u_id');
                 $table->string('name');
                 $table->string('email');
+                $table->string('password');
             });
         }
     }
