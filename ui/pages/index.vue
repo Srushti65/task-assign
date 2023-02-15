@@ -117,6 +117,7 @@
       <h2 m-5>Tasks List</h2>
       <table class="table table-hover">
         <tr>
+          <td>Done or Not?</td>
           <td>Title</td>
           <!-- <td>Description</td> -->
           <td>Created By</td>
@@ -126,8 +127,41 @@
           <td>Update/Delete</td>
         </tr>
         <tr v-for="(task, i) in $store.state.tasks" :key="i">
+
+          <td class="checkparent"> 
+              <input class="form-check-input check" type="checkbox" :value="task.t_id" v-model="taskCompleted" @click="completeTask(task.t_id)" id="flexCheckDefault">
+          </td>
           <td>
-            <NuxtLink :to="`/view/${task.t_id}`">{{ task.title }}</NuxtLink>
+            <!-----------------------MODAL START-------------------------->
+
+            <NuxtLink
+              :to="`/view/${task.t_id}`"
+              type="button"
+              class=""
+              data-toggle="modal"
+              data-target="#exampleModal"
+              v-if="taskCompleted"><strike>{{ task.title }}</strike></NuxtLink
+            >
+
+            <NuxtLink
+              :to="`/view/${task.t_id}`"
+              type="button"
+              class=""
+              data-toggle="modal"
+              data-target="#exampleModal"
+              v-else>{{ task.title }}</NuxtLink
+            >
+
+            <!-- <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              {{ task.title }}
+            </button> -->
+
+            <!-----------------------MODAL END-------------------------->
           </td>
           <!-- <td>{{ task.description }}</td> -->
           <td>{{ task.owner_name }}</td>
@@ -140,60 +174,49 @@
                 <img src="/images/edit.svg" alt="" />
               </NuxtLink>
             </button>
-            <!-- <div
-              class="modal fade"
-              id="exampleModal"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="exampleModalLabel"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                      Modal title
-                    </h5>
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">...</div>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                    <button type="button" class="btn btn-primary">
-                      Save changes
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div> -->
             <button class="btn-no-design" @click="deleteTask(task.t_id)">
               <img src="/images/delete.svg" alt="" />
             </button>
           </td>
         </tr>
       </table>
-
-      <!-- {{ $store.state.tasks }} -->
-      <!-- <div v-for="(task, i) in $store.state.tasks" :key="i">
-        <div v-for="(task, i) in this.tasks" :key="i">
-        {{ task }}
-        <task :task="task" />
-      </div> -->
-      <!-- <task v-for="(task, i) in $store.state.tasks" :key="i" :task="task" /> -->
     </div>
+
+    <!------------MODAL OPENING START--------------->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!------------MODAL OPENING END--------------->
   </div>
 </template>
 
@@ -213,6 +236,7 @@ export default {
         due_date: "",
       },
       flag: false,
+      taskCompleted : "",
     };
   },
   components: { task },
@@ -237,6 +261,10 @@ export default {
         }
       }
     },
+    completeTask(id){
+      // console.log("Id of the selected item " + id);
+      this.$store.dispatch("completeTask", id);
+    }
   },
   async fetch() {
     this.showTask();
@@ -278,5 +306,12 @@ tr:nth-child(even) {
 .btn-no-design {
   border: 0;
   background-color: transparent;
+}
+.checkparent{
+  padding-left: 40px;
+}
+.check{
+  margin-right: 10px;
+  border: 1px solid #035bff;
 }
 </style>
