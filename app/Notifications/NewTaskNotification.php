@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notification;
 use App\Models\task;
 use App\Models\FormData;
 
-class newTaskNotification extends Notification
+class NewTaskNotification extends Notification
 {
     use Queueable;
 
@@ -47,6 +47,8 @@ class newTaskNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        // dd($notifiable);
+        
         // $url = url('/tasks/', $this->task->id);
         $env = env('APP_URL');
         $url = ($env . 'view/' . $this->task->t_id);

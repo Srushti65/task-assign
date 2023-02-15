@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 // use Illuminate\Support\Facades\Notification;
 use App\Models\FormData;
-use App\Notifications\newTaskNotification;
+use App\Notifications\NewTaskNotification;
 use App\Notifications\taskCompletedNotification;
 
 class task extends Model
@@ -41,8 +41,8 @@ class task extends Model
     {
         $user = FormData::find($id);
         //you are supposed to add here somthinggggg
-        $user->notify(new newTaskNotification($this));
-        // Notification::send($user, new newTaskNotification($this) );
+        $user->notify(new NewTaskNotification($this));
+        // Notification::send($user, new NewTaskNotification($this) );
 
     }
 
