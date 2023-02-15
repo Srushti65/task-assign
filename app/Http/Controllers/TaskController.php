@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\task;
 use App\Models\assign;
+use App\Models\FormData;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\NewTaskNotification;
 use App\Notifications\taskCompletedNotification;
@@ -37,8 +38,8 @@ class TaskController extends Controller
         $n->owner_name = $n->owner->name;
 
         // $n->sendNewTaskNotification($n->assigned_to);
-
-        Notification::send($n->assigned_to, new NewTaskNotification($n) );
+        $user = FormData::find($n->assigned_to);
+        Notification::send($user, new NewTaskNotification($n) );
 
         return $n;
     }
