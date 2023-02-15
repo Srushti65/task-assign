@@ -17,11 +17,13 @@ class NewTaskNotification extends Notification
      * Create a new notification instance.
      *
      * @return void
-     * 
-     * 
+     *
+     *
      */
     public $task;
-        
+    // public $connection = 'database';
+
+
     public function __construct(task $task)
     {
         //
@@ -48,7 +50,7 @@ class NewTaskNotification extends Notification
     public function toMail($notifiable)
     {
         // dd($notifiable);
-        
+
         // $url = url('/tasks/', $this->task->id);
         $env = env('APP_URL');
         $url = ($env . 'view/' . $this->task->t_id);

@@ -9,6 +9,7 @@ use App\Models\FormData;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\NewTaskNotification;
 use App\Notifications\taskCompletedNotification;
+use App\Jobs\NewTaskJob;
 
 class TaskController extends Controller
 {
@@ -39,8 +40,8 @@ class TaskController extends Controller
 
         // $n->sendNewTaskNotification($n->assigned_to);
         $user = FormData::find($n->assigned_to);
-        Notification::send($user, new NewTaskNotification($n) );
-
+        // Notification::send($user, new NewTaskNotification($n) );
+        dispatch(new NewTaskJob($n, $user));
         return $n;
     }
 
@@ -101,7 +102,7 @@ class TaskController extends Controller
         $task->is_completed = 1;
 
         $task->save();
-        //wrie this function logic here 
+        //wrie this function logic here
         $task->taskIsCompletedNotification($task->owner_id);
 
         return response()->json(['message' => 'task completed successfully']);
