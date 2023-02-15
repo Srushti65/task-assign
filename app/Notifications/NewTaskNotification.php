@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notification;
 use App\Models\task;
 use App\Models\FormData;
 
-class newTaskNotification extends Notification
+class NewTaskNotification extends Notification
 {
     use Queueable;
 
