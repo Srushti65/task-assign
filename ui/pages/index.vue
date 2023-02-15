@@ -129,7 +129,7 @@
         <tr v-for="(task, i) in $store.state.tasks" :key="i">
 
           <td class="checkparent"> 
-              <input class="form-check-input check" type="checkbox" :value="task.t_id" v-model="taskCompleted" @click="completeTask(task.t_id)" id="flexCheckDefault">
+              <input class="form-check-input check" type="checkbox" :value="task.t_id" v-model="taskCompleted[i]" @click="completeTask(task.t_id)" id="flexCheckDefault">
           </td>
           <td>
             <!-----------------------MODAL START-------------------------->
@@ -140,7 +140,7 @@
               class=""
               data-toggle="modal"
               data-target="#exampleModal"
-              v-if="taskCompleted"><strike>{{ task.title }}</strike></NuxtLink
+              v-if="taskCompleted[i]"><strike>{{ task.title }}</strike></NuxtLink
             >
 
             <NuxtLink
@@ -236,7 +236,7 @@ export default {
         due_date: "",
       },
       flag: false,
-      taskCompleted : "",
+      taskCompleted : [],
     };
   },
   components: { task },
